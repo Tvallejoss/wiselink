@@ -1,29 +1,39 @@
 import React, { useEffect, useState } from "react";
 import "../styles/./Home.css";
 import { Carteras } from "./Carteras";
+
 import axios from "axios";
 
 export const Home = () => {
     const [CryptoCurrency, setCryptoCurrency] = useState([]);
     const [CryptoSearch, setCryptoSearch] = useState("");
+    
+    
+
 
     useEffect(() => {
-        // if (CryptoSearch) {
-        //     const newCryptoCurrency = CryptoCurrency.filter((CRYPTO) => {
-        //         return CRYPTO.name
-        //             .toLowerCase()
-        //             .includes(CryptoSearch.toLowerCase());
-        //     });
 
-        //     setCryptoCurrency(newCryptoCurrency);
-        // }
-        console.log("entre pero sin if");
+        //Para que no siga haciendo pedidos a la API si ya tengo todo en el storage.
+        if (JSON.parse(localStorage.getItem("CryptoCurrencyStorage"))) {
+            setCryptoCurrency(
+                JSON.parse(localStorage.getItem("CryptoCurrencyStorage"))
+            );
+            return;
+        }
+
         axios
             .get(
                 "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=30&page=1&sparkline=false"
             )
             .then(({ data }) => {
                 setCryptoCurrency(data);
+                localStorage.setItem(
+                    "CryptoCurrencyStorage",
+                    JSON.stringify(data)
+                );
+                if (!JSON.parse(localStorage.getItem("myWalletCrypto"))) {
+                    localStorage.setItem("myWalletCrypto", JSON.stringify([]));
+                }
                 console.log(data);
             })
             .catch((err) => console.log("ERRORR ", err));
@@ -75,6 +85,8 @@ export const Home = () => {
                     <></>
                 )}
             </div>
+
+           
         </div>
     );
 };

@@ -1,7 +1,11 @@
 import React from "react";
 import "../styles/./Navbar.css";
+import { Link, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
+    const { pathname } = useLocation();
+    console.log("LOCATIOIN", pathname);
+
     return (
         <div className="Navbar">
             <div className="navbarLogo">
@@ -10,7 +14,31 @@ export const Navbar = () => {
             </div>
 
             <div className="navbarNombre">
-                <h1>Hi <span>Tomas </span></h1>
+                {pathname === "/myWallet" ? (
+                    <>
+                        <Link to="/">
+                            <h1>
+                                <span>Home </span>{" "}
+                            </h1>
+                        </Link>
+                    </>
+                ) : (
+                    <>
+                        <Link to="/myWallet">
+                            <h1>
+                                <span>My Wallet </span>{" "}
+                            </h1>
+                        </Link>
+                    </>
+                )}
+
+                <h1>
+                    <span>Coins </span>
+                </h1>
+
+                <h1>
+                    ¡Hi <span>Tomas </span>!
+                </h1>
             </div>
         </div>
     );

@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/./Carteras.css";
-export const Carteras = ({ crypto ,i}) => {
+import { Modal } from "./Modal";
+export const Carteras = ({ crypto, i }) => {
+    const [ModalStado, setModalEstado] = useState(false);
+
+    const AddCrypto = () => {
+        const newCryptoInWallet = crypto;
+        const cryptos = JSON.parse(localStorage.getItem("myWalletCrypto"));
+        if (cryptos.length) {
+            cryptos.push(newCryptoInWallet);
+            localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
+            return;
+        }
+        //Agregar Nuevo Valor
+        cryptos.push(newCryptoInWallet);
+        localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
+    };
 
     return (
-        <div className="Card">
+        <div className="Card" onClick={() => setModalEstado(true)}>
             <div className="cardImage">
                 <img src={crypto.image} alt="" />
             </div>
@@ -20,8 +35,10 @@ export const Carteras = ({ crypto ,i}) => {
             </div>
 
             <div className="cardButton">
-                <p>BUY</p>
+                <p onClick={AddCrypto}>Add to your wallet </p>
             </div>
+
+            <Modal ModalStado={ModalStado} setModalEstado={setModalEstado} crypto = {crypto} />
         </div>
     );
 };

@@ -1,17 +1,40 @@
-
 import "./App.css";
 
 //Componentes Importados
-import { Navbar } from "./componentes/Navbar"
-import { Home } from "./componentes/Home"
+import { Navbar } from "./componentes/Navbar";
+import { Home } from "./componentes/Home";
+import { Wallet } from "./componentes/Wallet";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-    return <div className="App">
+    return (
+        <BrowserRouter>
+            <div className="App">
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <>
+                                <Navbar />
 
-        <Navbar/>
+                                <Home />
+                            </>
+                        }
+                    ></Route>
 
-            <Home/>
-    </div>;
+                    <Route
+                        path="/myWallet"
+                        element={
+                            <>
+                            <Navbar />
+                                <Wallet />
+                            </>
+                        }
+                    ></Route>
+                </Routes>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

@@ -39,6 +39,16 @@
 .navbarNombre h1 {
     font-size: 25px;
     font-family: "googleFont";
+    margin-right: 20px;
+}
+
+
+.navbarNombre Link h1 span {
+    text-decoration: none;
+}
+
+Link {
+    text-decoration: none;
 }
 
 .navbarNombre h1 span {
