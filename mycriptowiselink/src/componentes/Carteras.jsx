@@ -1,24 +1,27 @@
 import React from "react";
 import "../styles/./Carteras.css";
+export const Carteras = ({ crypto ,i}) => {
 
-export const Carteras = () => {
     return (
-       <div className="card">
-
-
+        <div className="Card">
             <div className="cardImage">
-                <img src="https://cdn.discordapp.com/attachments/840217064978907170/1088937958125609010/58428ed0a6515b1e0ad75ab6.png" alt="" />
+                <img src={crypto.image} alt="" />
             </div>
 
-                <div className = "cardInfo">
-                    <h1>BITCOIN</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo modi a dolorem, recusandae inventore, error </p>
-                </div>
+            <div className="cardInfo">
+                <h1>{crypto.name}</h1>
+                <p>Current Price: {crypto.current_price}</p>
+                <p>Price Change: {crypto.price_change_24h}</p>
+                <p>
+                    Price Change Percentage:{" "}
+                    {crypto.price_change_percentage_24h}
+                </p>
+                <p>Total Volume: {crypto.total_volume}</p>
+            </div>
 
-                <div className="cardButton" >
-
-                    <p>BUY</p>
-                </div>
-       </div>
+            <div className="cardButton">
+                <p>BUY</p>
+            </div>
+        </div>
     );
 };
