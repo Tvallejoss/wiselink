@@ -7,12 +7,8 @@ import axios from "axios";
 export const Home = () => {
     const [CryptoCurrency, setCryptoCurrency] = useState([]);
     const [CryptoSearch, setCryptoSearch] = useState("");
-    
-    
-
 
     useEffect(() => {
-
         //Para que no siga haciendo pedidos a la API si ya tengo todo en el storage.
         if (JSON.parse(localStorage.getItem("CryptoCurrencyStorage"))) {
             setCryptoCurrency(
@@ -54,6 +50,7 @@ export const Home = () => {
                 </div>
 
                 <div id="CriptoInfo">
+
                     <h1>Cryptocurrency</h1>
                     <p>
                         Choose to invest in the fastest and safest way for your
@@ -65,7 +62,7 @@ export const Home = () => {
                 <hr />
             </div>
 
-            <h1> - Cryptocurrency Wallets -</h1>
+            <h1> - Cryptocurrencies - </h1>
 
             <div className="buttonSearch">
                 <input
@@ -85,8 +82,6 @@ export const Home = () => {
                     <></>
                 )}
             </div>
-
-           
         </div>
     );
 };

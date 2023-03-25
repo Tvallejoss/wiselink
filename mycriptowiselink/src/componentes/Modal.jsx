@@ -1,40 +1,53 @@
 import React from "react";
 import styled from "styled-components";
 
-export const Modal = ({crypto , ModalStado, setModalEstado }) => {
- 
-
+export const Modal = ({ ModalEstado, setModalEstado, crypto }) => {
+    const SetNewModalValue = async () => {
+        await setModalEstado(!ModalEstado);
+    };
 
     return (
         <>
-            {ModalStado && (
+            {ModalEstado ? (
                 <Overlay>
                     <ContenedorModal>
                         <EncabezadoModal>
-                            <h3>{crypto.name}</h3>
-                            <BotonCerrar onClick = { () => setModalEstado(false)}>
+                            <h3>Cripto-Market</h3>
+                            <BotonCerrar >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
                                     height="16"
                                     fill="currentColor"
-                                    class="bi bi-x"
+                                    className="bi bi-x"
                                     viewBox="0 0 16 16"
+                                   
                                 >
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" 
+                                     onClick={SetNewModalValue}/>
                                 </svg>
                             </BotonCerrar>
                         </EncabezadoModal>
 
                         <h1>{crypto.name}</h1>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            e.
-                        </p>
+                        <div className="cardInfo">
+                            
+                                <img src={crypto.image} alt="" />
+                                <br />
+                                <p>Current Price: {crypto.current_price}</p>
+                            <p>Price Change: {crypto.price_change_24h}</p>
+                            <p>
+                                Price Change Percentage:{" "}
+                                {crypto.price_change_percentage_24h}
+                            </p>
+                            <p>Total Volume: {crypto.total_volume}</p>
+                        </div>
 
-                        <BotonAceptar>Agregar</BotonAceptar>
+                        <BotonAceptar>¡INVEST! </BotonAceptar>
                     </ContenedorModal>
                 </Overlay>
+            ) : (
+                <> </>
             )}
         </>
     );
@@ -54,8 +67,8 @@ const Overlay = styled.div`
 `;
 
 const ContenedorModal = styled.div`
-    width: 500px;
-    min-height: 100px;
+    width: 60%;
+    min-height: 400px;
     background: #1b1b1b;
     position: relativve;
     border-radius: 5px;
@@ -95,8 +108,8 @@ const BotonCerrar = styled.button`
 `;
 
 const BotonAceptar = styled.button`
-    border: none;
-    width: 30px;
+    border: 1px solid #F27220;
+    width: 20%;
     height: 30px;
     background: none;
     cursor: pointer;

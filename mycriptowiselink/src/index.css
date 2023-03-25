@@ -1,10 +1,10 @@
+@font-face {
+    font-family: googleFont;
+    src: url("../public/fonts/Oswald-Light.ttf");
+}
 
-@font-face { font-family: googleFont; 
-  src: url("../public/fonts/Oswald-Light.ttf"); } 
-
-
-body {
-  background-color: #1B1B1B;
-  margin: 0 auto;
-font-family: "googleFont";
+html {
+    background-color: #1b1b1b;
+    margin: 0 auto;
+    font-family: "googleFont";
 }

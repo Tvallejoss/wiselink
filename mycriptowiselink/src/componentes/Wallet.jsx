@@ -18,7 +18,7 @@ export const Wallet = () => {
                 </thead>
                 <tbody>
                     {cryptos.map((coin, index) => (
-                        <tr>
+                        <tr key={index}>
                             <td className="text-muted">{index}</td>
                             <td>
                                 <img

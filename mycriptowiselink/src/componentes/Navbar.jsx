@@ -4,13 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
     const { pathname } = useLocation();
-    console.log("LOCATIOIN", pathname);
 
     return (
         <div className="Navbar">
             <div className="navbarLogo">
                 {/* <img src="https://cdn.discordapp.com/attachments/840217064978907170/1088873730928803921/icons8-bitcoin-accepted-64.png" /> */}
-                <h1>CRIPTO MARKET</h1>
+                <h1>CRIPTO-MARKET</h1>
             </div>
 
             <div className="navbarNombre">

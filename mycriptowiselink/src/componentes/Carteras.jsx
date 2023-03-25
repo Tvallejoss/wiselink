@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/./Carteras.css";
 import { Modal } from "./Modal";
-export const Carteras = ({ crypto, i }) => {
-    const [ModalStado, setModalEstado] = useState(false);
+export const Carteras = ({ crypto, i, setCryptoSearch }) => {
+    const [ModalEstado, setModalEstado] = useState(false);
 
     const AddCrypto = () => {
         const newCryptoInWallet = crypto;
@@ -17,28 +17,36 @@ export const Carteras = ({ crypto, i }) => {
         localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
     };
 
+    const newModalValue = () => {
+        setModalEstado(!ModalEstado);
+    };
+
     return (
-        <div className="Card" onClick={() => setModalEstado(true)}>
+        <div className="Card" onClick={newModalValue}>
             <div className="cardImage">
                 <img src={crypto.image} alt="" />
             </div>
 
             <div className="cardInfo">
                 <h1>{crypto.name}</h1>
-                <p>Current Price: {crypto.current_price}</p>
+                {/* <p>Current Price: {crypto.current_price}</p>
                 <p>Price Change: {crypto.price_change_24h}</p>
                 <p>
                     Price Change Percentage:{" "}
                     {crypto.price_change_percentage_24h}
                 </p>
-                <p>Total Volume: {crypto.total_volume}</p>
+                <p>Total Volume: {crypto.total_volume}</p> */}
             </div>
 
-            <div className="cardButton">
+            {/* <div className="cardButton">
                 <p onClick={AddCrypto}>Add to your wallet </p>
-            </div>
+            </div> */}
 
-            <Modal ModalStado={ModalStado} setModalEstado={setModalEstado} crypto = {crypto} />
+            <Modal
+                ModalEstado={ModalEstado}
+                setModalEstado={setModalEstado}
+                crypto={crypto}
+            />
         </div>
     );
 };
