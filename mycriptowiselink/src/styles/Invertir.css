@@ -1,0 +1,9 @@
+.invertirContenido {
+    text-align: center;
+    height: auto;
+    min-height: 500px;
+    /* border: 1px solid red; */
+    margin: 60px;
+    color: #ffffff;
+    box-shadow:    -12px -5px 14px 4px rgba(0,0,0,0.75);
+}

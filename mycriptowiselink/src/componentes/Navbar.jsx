@@ -13,27 +13,50 @@ export const Navbar = () => {
             </div>
 
             <div className="navbarNombre">
+                {pathname === "/" ? (
+                    <>
+                        <Link to="/myWallet" className="myWalletStyle">
+                            <h1>
+                                <span>My Wallet </span>{" "}
+                            </h1>
+                        </Link>
+                    </>
+                ) : (
+                    <> </>
+                )}
+
                 {pathname === "/myWallet" ? (
                     <>
-                        <Link to="/">
+                        <Link to="/" className="myWalletStyle">
                             <h1>
                                 <span>Home </span>{" "}
                             </h1>
                         </Link>
                     </>
                 ) : (
+                    <></>
+                )}
+
+                {pathname === "/invest" ? (
                     <>
-                        <Link to="/myWallet">
+                        <Link to="/" className="myWalletStyle">
+                            <h1>
+                                <span>Home </span>{" "}
+                            </h1>
+                        </Link>
+                        <Link to="/myWallet" className="myWalletStyle">
                             <h1>
                                 <span>My Wallet </span>{" "}
                             </h1>
                         </Link>
                     </>
+                ) : (
+                    <></>
                 )}
-
+{/* 
                 <h1>
                     <span>Coins </span>
-                </h1>
+                </h1> */}
 
                 <h1>
                     ¡Hi <span>Tomas </span>!

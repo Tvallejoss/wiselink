@@ -47,6 +47,18 @@
     text-decoration: none;
 }
 
+.myWalletStyle {
+    text-decoration: none;
+    color: #F27220;
+
+}
+
+.myWalletStyle:hover {
+    text-decoration: none;
+    color: #f57c30;
+
+}
+
 Link {
     text-decoration: none;
 }

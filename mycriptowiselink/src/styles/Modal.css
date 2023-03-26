@@ -1,0 +1,9 @@
+.investStyle {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.investStyle:hover {
+    text-decoration: none;
+    color: #F27220;
+}

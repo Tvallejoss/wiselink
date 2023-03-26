@@ -4,6 +4,7 @@ import "./App.css";
 import { Navbar } from "./componentes/Navbar";
 import { Home } from "./componentes/Home";
 import { Wallet } from "./componentes/Wallet";
+import { Invertir } from "./componentes/Invertir";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -26,8 +27,18 @@ function App() {
                         path="/myWallet"
                         element={
                             <>
-                            <Navbar />
+                                <Navbar />
                                 <Wallet />
+                            </>
+                        }
+                    ></Route>
+
+                    <Route
+                        path="/invest"
+                        element={
+                            <>
+                                <Navbar />
+                                <Invertir />
                             </>
                         }
                     ></Route>

@@ -9,7 +9,7 @@ export const Home = () => {
     const [CryptoSearch, setCryptoSearch] = useState("");
 
     useEffect(() => {
-        //Para que no siga haciendo pedidos a la API si ya tengo todo en el storage.
+        //Para que no siga haciendo pedidos a la API al momendo de desarrollar
         if (JSON.parse(localStorage.getItem("CryptoCurrencyStorage"))) {
             setCryptoCurrency(
                 JSON.parse(localStorage.getItem("CryptoCurrencyStorage"))
