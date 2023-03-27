@@ -7,3 +7,9 @@
     text-decoration: none;
     color: #F27220;
 }
+
+
+.cardInfo img {
+    width: 20%;
+    height: 20%;
+}

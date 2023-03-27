@@ -1,13 +1,36 @@
-import React from "react";
-const titles = ["#", "Coin", "Price", "Price Change", "24h Volume"];
+import React, { useEffect, useState } from "react";
+import "../styles/./Wallet.css";
+const titles = [
+    "#",
+    "Coin",
+    "Quantity ",
+    "Price",
+    "Price Change",
+    "24h Volume",
+    "Date of purchase",
+    "Total Price",
+    "Accions"
+];
 
 export const Wallet = () => {
     const cryptos = JSON.parse(localStorage.getItem("myWalletCrypto"));
+    const [myProfileData, setMyProfileData] = useState({});
+
+    useEffect(() => {
+        const myProfileDataLS = JSON.parse(
+            localStorage.getItem("myProfileData")
+        );
+        if (myProfileDataLS) {
+            setMyProfileData(myProfileDataLS);
+        }
+    }, []);
 
     if (!cryptos) return <div>no coins</div>;
 
     return (
-        <div className="container" id = "Wallet">
+        <div className="container" id="Wallet">
+            <h1 className= "moneyQuantity">Your Money: <span className="quantity"> ${myProfileData.moneyToInvert}</span> </h1>
+
             <table className="table table-dark mt-4 table-hover">
                 <thead>
                     <tr>
@@ -32,6 +55,7 @@ export const Wallet = () => {
                                     {coin.symbol}
                                 </span>
                             </td>
+                            <td>{coin.quantity}</td>
 
                             <td>${coin.current_price.toLocaleString()}</td>
 
@@ -46,6 +70,16 @@ export const Wallet = () => {
                             </td>
 
                             <td>${coin.total_volume.toLocaleString()}</td>
+
+                            <td>{coin.date}</td>
+                            <td>${coin.current_price++ * coin.quantity++}</td>
+
+
+                            <td>
+                                
+                                <button className="buttonSell">Sell</button>
+                                </td>
+
                         </tr>
                     ))}
                 </tbody>

@@ -29,6 +29,14 @@ export const Home = () => {
                 );
                 if (!JSON.parse(localStorage.getItem("myWalletCrypto"))) {
                     localStorage.setItem("myWalletCrypto", JSON.stringify([]));
+
+                    //Perfil Data (para tener informacion de un usuario al momento de crear una wallet)
+                    localStorage.setItem("myProfileData", JSON.stringify({
+                        name: "Tomass",
+                        moneyToInvert: "500000",
+                        email : "tomas@gmail.com",
+                    }));
+
                 }
                 console.log(data);
             })
@@ -50,7 +58,6 @@ export const Home = () => {
                 </div>
 
                 <div id="CriptoInfo">
-
                     <h1>Cryptocurrency</h1>
                     <p>
                         Choose to invest in the fastest and safest way for your

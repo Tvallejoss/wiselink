@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
     const { pathname } = useLocation();
+    const [myProfileData, setMyProfileData] = useState({});
+    
+    useEffect(() => {
+        const myProfileDataLS = JSON.parse(
+            localStorage.getItem("myProfileData")
+        );
+        if (myProfileDataLS) {
+            console.log("seteo desde la nav");
+            setMyProfileData(myProfileDataLS);
+        }
+    }, []);
+
+
 
     return (
         <div className="Navbar">
             <div className="navbarLogo">
-                {/* <img src="https://cdn.discordapp.com/attachments/840217064978907170/1088873730928803921/icons8-bitcoin-accepted-64.png" /> */}
                 <h1>CRIPTO-MARKET</h1>
             </div>
 
@@ -59,7 +71,7 @@ export const Navbar = () => {
                 </h1> */}
 
                 <h1>
-                    ¡Hi <span>Tomas </span>!
+                    ¡Hi <span>{myProfileData.name} </span>!
                 </h1>
             </div>
         </div>
