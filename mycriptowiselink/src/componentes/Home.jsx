@@ -29,14 +29,6 @@ export const Home = () => {
                 );
                 if (!JSON.parse(localStorage.getItem("myWalletCrypto"))) {
                     localStorage.setItem("myWalletCrypto", JSON.stringify([]));
-
-                    //Perfil Data (para tener informacion de un usuario al momento de crear una wallet)
-                    localStorage.setItem("myProfileData", JSON.stringify({
-                        name: "Tomass",
-                        moneyToInvert: "500000",
-                        email : "tomas@gmail.com",
-                    }));
-
                 }
                 console.log(data);
             })

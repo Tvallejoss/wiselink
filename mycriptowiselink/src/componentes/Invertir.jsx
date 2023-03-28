@@ -6,12 +6,20 @@ export const Invertir = () => {
     const navigate = useNavigate();
     const [cryptoToInvest, setCryptoToInvest] = useState();
     const [QuantityState, setQuantityState] = useState("1");
+    const date = new Date();
+    const CompleteDate =
+        date.getDate() +
+        "-" +
+        date.getMonth() +
+        "-" +
+        date.getFullYear() +
+        " " +
+        date.getHours() +
+        ":" +
+        date.getMinutes() +
+        "Hs";
 
     useEffect(() => {
-        const date = new Date();
-        const CompleteDate =
-            date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-
         setCryptoToInvest({
             ...JSON.parse(localStorage.getItem("cryptoToInvestLS")),
             quantity: "1",
@@ -31,6 +39,7 @@ export const Invertir = () => {
                         ...coin,
                         quantity:
                             coin.quantity++ + newCryptoInWallet.quantity++,
+                        date: CompleteDate,
                     };
                 }
                 return newCryptoInWallet;
