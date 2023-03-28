@@ -57,7 +57,7 @@ export const Navbar = () => {
                     <></>
                 )}
 
-                {pathname === "/invest" ? (
+                {pathname === "/invest" || pathname === "/sell" ? (
                     <>
                         <Link to="/" className="myWalletStyle">
                             <h1>

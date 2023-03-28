@@ -3,7 +3,9 @@
     src: url("../../public/fonts/Oswald-Light.ttf");
 }
 
-
+#Wallet {
+    cursor: pointer;
+}
 
 .moneyQuantity {
 margin-top: 30px;
