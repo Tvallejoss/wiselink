@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 export const Invertir = () => {
     const navigate = useNavigate();
     const [cryptoToInvest, setCryptoToInvest] = useState();
-    const [QuantityState, setQuantityState] = useState("1");
+    const [myProfileData, setMyProfileData] = useState({});
+
     const date = new Date();
     const CompleteDate =
         date.getDate() +
@@ -25,6 +26,12 @@ export const Invertir = () => {
             quantity: "1",
             date: CompleteDate,
         });
+        const myProfileDataLS = JSON.parse(
+            localStorage.getItem("myProfileData")
+        );
+        if (myProfileDataLS) {
+            setMyProfileData(myProfileDataLS);
+        }
     }, []);
 
     const AddCrypto = () => {
@@ -33,26 +40,48 @@ export const Invertir = () => {
 
         if (cryptos.length) {
             //Logica para saber si ya existe esa coin en la wallet y agregar unicamente la cantidad correspondiente
-            const newCryptos = cryptos.map((coin) => {
+            let coinIndex;
+            cryptos.forEach((coin, i) => {
                 if (coin.id === newCryptoInWallet.id) {
-                    return {
-                        ...coin,
-                        quantity:
-                            coin.quantity++ + newCryptoInWallet.quantity++,
-                        date: CompleteDate,
-                    };
+                    coinIndex = i;
                 }
-                return newCryptoInWallet;
             });
-            console.log("CRYPTOS ADD", newCryptos);
-            localStorage.setItem("myWalletCrypto", JSON.stringify(newCryptos));
-            navigate("/myWallet");
+            if (coinIndex >= 0) {
+                cryptos[coinIndex] = {
+                    ...cryptos[coinIndex],
+                    quantity:
+                        cryptos[coinIndex].quantity++  +
+                        newCryptoInWallet.quantity++,
+                };
+            } else {
+                cryptos.push(newCryptoInWallet);
+            }
 
+            // localStorage.setItem(
+            //     "myProfileData",
+            //     JSON.stringify({
+            //         ...myProfileData,
+            //         moneyToInvert:
+            //             myProfileData.moneyToInvert++ -
+            //             cryptos[coinIndex].quantity++ * cryptos[coinIndex].current_price,
+            //     })
+            // );
+            localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
+            navigate("/myWallet");
             return;
         }
 
-        //Agregar Nuevo Valor
+        //Agregar Nuevo Valor y reducir "your money"
         cryptos.push(newCryptoInWallet);
+        localStorage.setItem(
+            "myProfileData",
+            JSON.stringify({
+                ...myProfileData,
+                moneyToInvert:
+                    myProfileData.moneyToInvert++ -
+                    cryptos[0].quantity++ * cryptos[0].current_price,
+            })
+        );
         localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
         navigate("/myWallet");
     };
@@ -113,3 +142,37 @@ export const Invertir = () => {
         </>
     );
 };
+
+/* 
+
+let data = [
+    {id: 1, cant:2} , {id:2 , cant:1} , {id:1 , cant : 1},{id:2 , cant:2}, {id:3 , cant : 2}]
+
+    let nuevo= [];
+
+data.map((info, index )=>{
+
+    for(let i = index+1; i < data.length ; i ++){
+
+        if(info.id === data[i].id){
+
+            nuevo.push({
+                ...info, cant: info.cant + data[i].cant
+            })
+        }
+    }
+})
+
+
+nuevo.map((info, index)=>{
+
+    for (let i = index+1; i < data.length;  i++){
+            if(info.id !== data[i].id){
+                nuevo.push(data[i])
+            }
+    }
+    
+})
+
+
+*/
