@@ -86,7 +86,7 @@ export const Wallet = () => {
                             <td>${coin.total_volume.toLocaleString()}</td>
 
                             <td>{coin.date}</td>
-                            <td>${coin.current_price++ * coin.quantity++}</td>
+                            <td>${Number(coin.current_price) * coin.quantity++}</td>
 
                             <td>
                                 <Link to="/sell">
