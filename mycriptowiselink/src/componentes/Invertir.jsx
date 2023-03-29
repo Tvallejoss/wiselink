@@ -23,7 +23,7 @@ export const Invertir = () => {
     useEffect(() => {
         setCryptoToInvest({
             ...JSON.parse(localStorage.getItem("cryptoToInvestLS")),
-            quantity: "1",
+            quantity: "0",
             date: CompleteDate,
         });
         const myProfileDataLS = JSON.parse(
@@ -37,6 +37,7 @@ export const Invertir = () => {
     const AddCrypto = () => {
         const newCryptoInWallet = cryptoToInvest;
         const cryptos = JSON.parse(localStorage.getItem("myWalletCrypto"));
+        if (newCryptoInWallet.quantity === "0") return;
 
         if (cryptos.length) {
             //Logica para saber si ya existe esa coin en la wallet y agregar unicamente la cantidad correspondiente
@@ -50,29 +51,26 @@ export const Invertir = () => {
                 cryptos[coinIndex] = {
                     ...cryptos[coinIndex],
                     quantity:
-                        cryptos[coinIndex].quantity++  +
+                        cryptos[coinIndex].quantity++ +
                         newCryptoInWallet.quantity++,
                 };
             } else {
-                cryptos.push(newCryptoInWallet);
+                cryptos.push({
+                    ...newCryptoInWallet,
+                    quantity: newCryptoInWallet.quantity,
+                });
             }
-
-            // localStorage.setItem(
-            //     "myProfileData",
-            //     JSON.stringify({
-            //         ...myProfileData,
-            //         moneyToInvert:
-            //             myProfileData.moneyToInvert++ -
-            //             cryptos[coinIndex].quantity++ * cryptos[coinIndex].current_price,
-            //     })
-            // );
             localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
             navigate("/myWallet");
             return;
         }
 
         //Agregar Nuevo Valor y reducir "your money"
-        cryptos.push(newCryptoInWallet);
+        cryptos.push({
+            ...newCryptoInWallet,
+            quantity: newCryptoInWallet.quantity - 1,
+        });
+
         localStorage.setItem(
             "myProfileData",
             JSON.stringify({
@@ -87,6 +85,7 @@ export const Invertir = () => {
     };
 
     const selectQuantity = ({ target }) => {
+        if (!target.value) return;
         setCryptoToInvest({
             ...JSON.parse(localStorage.getItem("cryptoToInvestLS")),
             quantity: target.value,
@@ -120,6 +119,7 @@ export const Invertir = () => {
                                                 onChange={selectQuantity}
                                             >
                                                 {/* <option value="">0</option> */}
+                                                <option value="">select</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>

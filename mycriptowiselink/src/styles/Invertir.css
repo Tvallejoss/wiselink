@@ -20,6 +20,8 @@
 .info img {
     display: block;
     margin: 5px auto;
+    width: 20%;
+    height: 20%;
 }
 .info h2 {
     color: #ffffff;

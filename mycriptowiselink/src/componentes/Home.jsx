@@ -32,7 +32,38 @@ export const Home = () => {
                 }
                 console.log(data);
             })
-            .catch((err) => console.log("ERRORR ", err));
+            .catch((err) => {
+                console.log("No se pudo conectar con coin/markets ", err);
+                const data = [
+                    {
+                        id: "bitcoin",
+                        name: "Bitcoin",
+                        current_price: "10000",
+                        image: "https://cdn.discordapp.com/attachments/840217064978907170/1090648579686793346/favpng_bitcoin-cash-logo.png",
+                        price_change_24h: "0.005",
+                        price_change_percentage_24h: "0.3",
+                        total_volume: "40",
+                    },
+                    {
+                        id: "doge",
+                        name: "Doge",
+                        current_price: "3000",
+                        image: "https://cdn.discordapp.com/attachments/840217064978907170/1090649067492741240/favpng_shiba-inu-dogecoin-bitcoin-digital-currency.png",
+                        price_change_24h: "-1.005",
+                        price_change_percentage_24h: "0.0012",
+                        total_volume: "2",
+                    },
+                ];
+                //seteo una simulacion de cryptomonedas para poder seguir desarrollando
+                setCryptoCurrency(data);
+                localStorage.setItem(
+                    "CryptoCurrencyStorage",
+                    JSON.stringify(data)
+                );
+                if (!JSON.parse(localStorage.getItem("myWalletCrypto"))) {
+                    localStorage.setItem("myWalletCrypto", JSON.stringify([]));
+                }
+            });
     }, []);
 
     const search = (e) => {

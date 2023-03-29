@@ -1,7 +1,7 @@
 .Card {
     margin: 30px;
     width: 15%;
-    height: 15%;
+    height: auto;
     background-color: #723E1D;
     color: #FFFFFF;
     box-shadow:    -12px -5px 14px 4px rgba(0,0,0,0.75);
