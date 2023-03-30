@@ -8,7 +8,7 @@ const titles = [
     "Price",
     "Price Change",
     "24h Volume",
-    "Date of purchase",
+    "Last purchase date",
     "Total Price",
     "Accions",
 ];

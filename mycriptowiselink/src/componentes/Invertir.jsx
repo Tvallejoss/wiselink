@@ -53,11 +53,13 @@ export const Invertir = () => {
                     quantity:
                         cryptos[coinIndex].quantity++ +
                         newCryptoInWallet.quantity++,
+                        date: CompleteDate
                 };
             } else {
                 cryptos.push({
                     ...newCryptoInWallet,
                     quantity: newCryptoInWallet.quantity,
+                    date: CompleteDate
                 });
             }
             localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
@@ -69,6 +71,7 @@ export const Invertir = () => {
         cryptos.push({
             ...newCryptoInWallet,
             quantity: newCryptoInWallet.quantity - 1,
+            date: CompleteDate
         });
 
         localStorage.setItem(
