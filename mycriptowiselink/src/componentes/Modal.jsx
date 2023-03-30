@@ -39,13 +39,13 @@ export const Modal = ({ ModalEstado, newModalValue, crypto }) => {
                         <div className="cardInfo">
                             <img src={crypto.image} alt="" />
                             <br />
+                            <div className= "precioInfo">
+
                             <p>Current Price: {crypto.current_price}</p>
                             <p>Price Change: {crypto.price_change_24h}</p>
-                            <p>
-                                Price Change Percentage:{" "}
-                                {crypto.price_change_percentage_24h}
-                            </p>
-                            <p>Total Volume: {crypto.total_volume}</p>
+                            </div>
+                            
+                            
                         </div>
 
                             <Link to="/invest" className="investStyle">
@@ -75,16 +75,35 @@ const Overlay = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+
+
+
 `;
 
 const ContenedorModal = styled.div`
     width: 60%;
+    height: auto;
     min-height: 400px;
     background: #1b1b1b;
     position: relativve;
     border-radius: 5px;
     box-shadow:    -12px -5px 14px 4px rgba(0,0,0,0.75);
     padding: 20px;
+
+    @media (max-width: 1300px) {
+        width: 80%;
+      }
+
+      @media (max-width: 1000px) {
+        width: 80%;
+      }
+
+      @media (max-width: 800px) {
+        height: auto;
+      }
+
+    
 `;
 
 const EncabezadoModal = styled.div`
@@ -116,6 +135,8 @@ const BotonCerrar = styled.button`
         width: 100%;
         height: 100%;
     }
+
+
 `;
 
 const BotonAceptar = styled.button`
@@ -132,4 +153,8 @@ const BotonAceptar = styled.button`
         width: 100%;
         height: 100%;
     }
+
+    @media (max-width: 800px) {
+        width:100%
+      }
 `;

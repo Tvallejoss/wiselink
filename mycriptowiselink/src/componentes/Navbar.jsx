@@ -79,7 +79,7 @@ export const Navbar = () => {
                 </h1> */}
 
                 {myProfileData.name ? (
-                    <h1>
+                    <h1 className="hello">
                         ¡Hi <span>{myProfileData.name} </span>!
                     </h1>
                 ) : (

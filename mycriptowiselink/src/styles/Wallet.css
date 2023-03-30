@@ -4,7 +4,20 @@
 }
 
 #Wallet {
+    width: 100%;
+    height: auto;
     cursor: pointer;
+}
+
+.contenidoTable {
+    width: 100%;
+    display: flex;
+    
+}
+
+.table {
+    background-color: #f27220;
+   
 }
 
 .moneyQuantity {
@@ -30,3 +43,7 @@ cursor: default;
     font-size: 20px;
     background-color: #f27220;
 }
+
+
+
+

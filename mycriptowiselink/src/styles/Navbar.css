@@ -1,15 +1,12 @@
 .Navbar {
-   width: 100%;
-   height: 60px;
-    background-color: #1B1B1B;
-   display: flex;
-   color: #FFFFFF;
-   padding-top: 15px;
-   box-shadow:  -5px 11px 25px -8px #F27220;
+    width: 100%;
+    height: 60px;
+    background-color: #1b1b1b;
+    display: flex;
+    color: #ffffff;
+    padding-top: 15px;
+    box-shadow: -5px 11px 25px -8px #f27220;
 }
-
-
-
 
 .navbarLogo {
     width: 50%;
@@ -17,23 +14,23 @@
     display: flex;
 }
 
-.navbarLogo img {
+/* .navbarLogo img {
     width: 64px;
     height:auto;
-}
+} */
 
 .navbarLogo h1 {
     font-size: 25px;
     padding-left: 10px;
     font-family: "googleFont";
-    cursor:default;
+    cursor: default;
 }
 
 .navbarNombre {
     width: 50%;
-   display: flex;
-   justify-content: end;
-   padding-right: 20px;
+    display: flex;
+    justify-content: end;
+    padding-right: 20px;
 }
 
 .navbarNombre h1 {
@@ -42,21 +39,18 @@
     margin-right: 20px;
 }
 
-
 .navbarNombre Link h1 span {
     text-decoration: none;
 }
 
 .myWalletStyle {
     text-decoration: none;
-    color: #F27220;
-
+    color: #f27220;
 }
 
 .myWalletStyle:hover {
     text-decoration: none;
     color: #f57c30;
-
 }
 
 Link {
@@ -67,4 +61,47 @@ Link {
     text-decoration: underline;
     text-decoration-style: unset;
     cursor: pointer;
+}
+
+@media (max-width: 660px) {
+    .Navbar {
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+
     }
+
+    .navbarLogo {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        border-bottom: 1px solid #f27220;
+    }
+
+    .navbarLogo h1 {
+        width: 100%;
+        text-align: center;
+        
+    }
+
+    .navbarNombre {
+        width: 100%;
+        display: flex;
+        
+    }
+
+    .hello {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .myWalletStyle {
+        width: 100%;
+        text-align: center;
+       
+    }
+    
+}

@@ -59,3 +59,73 @@
     color: #ffffff;
     background-color: #f27220;
 }
+
+
+
+@media (max-width: 1100px) {
+    .invertirContenido {
+        
+        height: auto;
+        min-height: 350px;
+      
+      
+    }
+  } 
+
+  @media (max-width: 750px) {
+    .invertirContenido {
+        
+        height: auto;
+        min-height: 300px;
+      
+      
+    }
+  } 
+
+
+  @media (max-width: 600px) {
+
+    .info img {
+        width: 50%;
+        height: 50%;
+    }
+
+    .info h2 {
+        font-size: 280%;
+    }
+    .info .precio {
+        font-size: 200%;
+        
+    }
+
+    .info .fila {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .cantidad {
+        width: 100%;
+    }
+
+    .info .fila label {
+       
+        width: 100%;
+    }
+    .select {
+        width: 100px;
+      
+    }
+    .info .fila button {
+        margin-top: 20px;
+        width: 100%;
+    }
+} 
+
+
+
+@media (max-width: 600px) { 
+    .info .fila button {
+        font-size: 80%;
+    }
+}

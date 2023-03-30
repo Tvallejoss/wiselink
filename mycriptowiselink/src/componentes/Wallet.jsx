@@ -42,67 +42,73 @@ export const Wallet = () => {
                 </span>{" "}
             </h1>
 
-            <table className="table table-dark mt-4 table-hover">
-                <thead>
-                    <tr>
-                        {titles.map((title, i) => (
-                            <td key={i}>{title}</td>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody id="Wallet">
-                    {cryptos.map((coin, index) => (
-                        <tr key={index}>
-                            <td className="text-muted">{index}</td>
-                            <td>
-                                <img
-                                    src={coin.image}
-                                    alt=""
-                                    className="img-fluid me-4"
-                                    style={{ width: "10%" }}
-                                />
-                                <span style={{ fontSize: "25px" }}>
-                                    {coin.name}
-                                </span>
-                                <span className="ms-3 text-muted">
-                                    {coin.symbol}
-                                </span>
-                            </td>
-                            <td>{coin.quantity}</td>
-
-                            <td>${coin.current_price.toLocaleString()}</td>
-
-                            <td
-                                className={
-                                    coin.price_change_percentage_24h > 0
-                                        ? "text-success"
-                                        : "text-danger"
-                                }
-                            >
-                                {coin.price_change_percentage_24h}
-                            </td>
-
-                            <td>${coin.total_volume.toLocaleString()}</td>
-
-                            <td>{coin.date}</td>
-                            <td>${Number(coin.current_price) * coin.quantity++}</td>
-
-                            <td>
-                                <Link to="/sell">
-                                    <button
-                                        className="buttonSell"
-                                        onClick={() => {
-                                            addDeleteCoinToLS(coin);
-                                        }}
-                                    >
-                                        Sell
-                                    </button>
-                                </Link>
-                            </td>
+            <div className="table table-responsive  table-responsive-{sm | md | lg | xl | xxl} " >
+                <table className="table  table-dark">
+                    <thead> 
+                        <tr>
+                            {titles.map((title, i) => (
+                                <td key={i}>{title}</td>
+                            ))}
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody id="Wallet">
+                        {cryptos.map((coin, index) => (
+                            <tr key={index}>
+                                <td className="text-muted">{index}</td>
+                                <td>
+                                    <img
+                                        src={coin.image}
+                                        alt=""
+                                        className="img-fluid me-4"
+                                        style={{ width: "10%" }}
+                                    />
+                                    <span style={{ fontSize: "25px" }}>
+                                        {coin.name}
+                                    </span>
+                                    <span className="ms-3 text-muted">
+                                        {coin.symbol}
+                                    </span>
+                                </td>
+                                <td>{coin.quantity}</td>
+
+                                <td>${coin.current_price.toLocaleString()}</td>
+
+                                <td
+                                    className={
+                                        coin.price_change_percentage_24h > 0
+                                            ? "text-success"
+                                            : "text-danger"
+                                    }
+                                >
+                                    {coin.price_change_percentage_24h}
+                                </td>
+
+                                <td>${coin.total_volume.toLocaleString()}</td>
+
+                                <td>{coin.date}</td>
+                                <td>
+                                    $
+                                    {Number(coin.current_price) *
+                                        coin.quantity++}
+                                </td>
+
+                                <td>
+                                    <Link to="/sell">
+                                        <button
+                                            className="buttonSell"
+                                            onClick={() => {
+                                                addDeleteCoinToLS(coin);
+                                            }}
+                                        >
+                                            Sell
+                                        </button>
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

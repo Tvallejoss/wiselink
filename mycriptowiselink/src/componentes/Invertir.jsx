@@ -120,6 +120,7 @@ export const Invertir = () => {
                                                 name=""
                                                 id=""
                                                 onChange={selectQuantity}
+                                                className= "select"
                                             >
                                                 {/* <option value="">0</option> */}
                                                 <option value="">select</option>
