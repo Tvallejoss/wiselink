@@ -31,6 +31,7 @@ export const Vender = () => {
     };
     const Delete = () => {
         const cryptos = JSON.parse(localStorage.getItem("myWalletCrypto"));
+
         if (!optionSelected) return;
         let coinIndex;
         cryptos.forEach((coin, i) => {
@@ -38,7 +39,6 @@ export const Vender = () => {
                 coinIndex = i;
             }
         });
-
 
         //para cuando "vendes" todas tus monedas
         if (cryptos[coinIndex].quantity - optionSelected <= 0) {
@@ -49,6 +49,32 @@ export const Vender = () => {
                 "myWalletCrypto",
                 JSON.stringify(nuevasCryptos)
             );
+
+            if (cryptoToDelete.quantity === 1) {
+                localStorage.setItem(
+                    "myProfileData",
+                    JSON.stringify({
+                        ...myProfileData,
+                        moneyToInvert:
+                            myProfileData.moneyToInvert++ +
+                            cryptoToDelete.current_price,
+                    })
+                );
+                navigate("/myWallet");
+                return;
+            }
+
+            localStorage.setItem(
+                "myProfileData",
+                JSON.stringify({
+                    ...myProfileData,
+                    moneyToInvert:
+                        myProfileData.moneyToInvert++ +
+                        cryptoToDelete.current_price *
+                            (cryptoToDelete.quantity - optionSelected),
+                })
+            );
+
             navigate("/myWallet");
             return;
         }
@@ -58,6 +84,17 @@ export const Vender = () => {
             quantity: cryptos[coinIndex].quantity - optionSelected,
         };
         localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
+
+        localStorage.setItem(
+            "myProfileData",
+            JSON.stringify({
+                ...myProfileData,
+                moneyToInvert:
+                    myProfileData.moneyToInvert++ +
+                    cryptoToDelete.current_price *
+                        (cryptoToDelete.quantity - optionSelected - 1),
+            })
+        );
         navigate("/myWallet");
     };
 
@@ -96,7 +133,10 @@ export const Vender = () => {
                                                 <option value="5">5</option> */}
 
                                                 {options.map((num) => (
-                                                    <option value={num}>
+                                                    <option
+                                                        value={num}
+                                                        key={num}
+                                                    >
                                                         {num}
                                                     </option>
                                                 ))}

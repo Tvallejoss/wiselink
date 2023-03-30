@@ -38,7 +38,6 @@ export const Invertir = () => {
         const newCryptoInWallet = cryptoToInvest;
         const cryptos = JSON.parse(localStorage.getItem("myWalletCrypto"));
         if (newCryptoInWallet.quantity === "0") return;
-
         if (cryptos.length) {
             let moneyQuantity = 0;
             //Logica para saber si ya existe esa coin en la wallet y agregar unicamente la cantidad correspondiente
@@ -86,7 +85,7 @@ export const Invertir = () => {
         //Agregar Nuevo Valor y reducir "your money"
         cryptos.push({
             ...newCryptoInWallet,
-            quantity: newCryptoInWallet.quantity - 1,
+            quantity: newCryptoInWallet.quantity,
             date: CompleteDate,
         });
 
@@ -96,7 +95,7 @@ export const Invertir = () => {
                 ...myProfileData,
                 moneyToInvert:
                     myProfileData.moneyToInvert++ -
-                    cryptos[0].quantity++ * cryptos[0].current_price,
+                    newCryptoInWallet.quantity++ * cryptos[0].current_price,
             })
         );
         localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
