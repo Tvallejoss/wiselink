@@ -1,31 +1,65 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Vender = () => {
+    const navigate = useNavigate();
     const [cryptoToDelete, setCryptoToDelete] = useState();
+    const [myProfileData, setMyProfileData] = useState({});
+    const [optionSelected, setOptionSelected] = useState();
+
     const [options, setOptions] = useState([]);
 
     useEffect(() => {
-        const coin = JSON.parse(localStorage.getItem("cryptoToDeleteLS"))
+        const coin = JSON.parse(localStorage.getItem("cryptoToDeleteLS"));
         setCryptoToDelete(coin);
+        setMyProfileData(JSON.parse(localStorage.getItem("myProfileData")));
+
         let optionsNumbers = [];
 
-        if ( coin && coin.quantity) {
-            for (let i = 1; i <= coin.quantity-1; i++) {
-                if(i === 1) optionsNumbers.push("select")
+        if (coin && coin.quantity) {
+            for (let i = 1; i <= coin.quantity - 1; i++) {
+                if (i === 1) optionsNumbers.push("select");
                 optionsNumbers.push(i);
             }
             setOptions(optionsNumbers);
         }
-
     }, []);
 
-    const selectQuantityToDelete = () => {};
-    const Delete = () => {
-
-        
+    const selectQuantityToDelete = ({ target }) => {
+        if (!target.value) return;
+        setOptionSelected(target.value);
     };
+    const Delete = () => {
+        const cryptos = JSON.parse(localStorage.getItem("myWalletCrypto"));
+        if (!optionSelected) return;
+        let coinIndex;
+        cryptos.forEach((coin, i) => {
+            if (coin.id === cryptoToDelete.id) {
+                coinIndex = i;
+            }
+        });
 
-    console.log("OPRTIONSSS", options);
+
+        //para cuando "vendes" todas tus monedas
+        if (cryptos[coinIndex].quantity - optionSelected <= 0) {
+            const nuevasCryptos = cryptos.filter(
+                (coin) => coin.id !== cryptoToDelete.id
+            );
+            localStorage.setItem(
+                "myWalletCrypto",
+                JSON.stringify(nuevasCryptos)
+            );
+            navigate("/myWallet");
+            return;
+        }
+
+        cryptos[coinIndex] = {
+            ...cryptos[coinIndex],
+            quantity: cryptos[coinIndex].quantity - optionSelected,
+        };
+        localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
+        navigate("/myWallet");
+    };
 
     return (
         <>

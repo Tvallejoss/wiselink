@@ -29,7 +29,6 @@ export const Wallet = () => {
     if (!cryptos) return <div>no coins</div>;
 
     const addDeleteCoinToLS = (coin) => {
-        console.log(coin);
         localStorage.setItem("cryptoToDeleteLS", JSON.stringify(coin));
     };
 
