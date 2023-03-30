@@ -40,6 +40,7 @@ export const Invertir = () => {
         if (newCryptoInWallet.quantity === "0") return;
 
         if (cryptos.length) {
+            let moneyQuantity = 0;
             //Logica para saber si ya existe esa coin en la wallet y agregar unicamente la cantidad correspondiente
             let coinIndex;
             cryptos.forEach((coin, i) => {
@@ -53,15 +54,30 @@ export const Invertir = () => {
                     quantity:
                         cryptos[coinIndex].quantity++ +
                         newCryptoInWallet.quantity++,
-                        date: CompleteDate
+                    date: CompleteDate,
                 };
+                moneyQuantity +=
+                    newCryptoInWallet.current_price *
+                    newCryptoInWallet.quantity;
             } else {
                 cryptos.push({
                     ...newCryptoInWallet,
                     quantity: newCryptoInWallet.quantity,
-                    date: CompleteDate
+                    date: CompleteDate,
                 });
+                moneyQuantity +=
+                    newCryptoInWallet.current_price *
+                    newCryptoInWallet.quantity;
             }
+
+            localStorage.setItem(
+                "myProfileData",
+                JSON.stringify({
+                    ...myProfileData,
+                    moneyToInvert:
+                        myProfileData.moneyToInvert++ - moneyQuantity,
+                })
+            );
             localStorage.setItem("myWalletCrypto", JSON.stringify(cryptos));
             navigate("/myWallet");
             return;
@@ -71,7 +87,7 @@ export const Invertir = () => {
         cryptos.push({
             ...newCryptoInWallet,
             quantity: newCryptoInWallet.quantity - 1,
-            date: CompleteDate
+            date: CompleteDate,
         });
 
         localStorage.setItem(
@@ -120,7 +136,7 @@ export const Invertir = () => {
                                                 name=""
                                                 id=""
                                                 onChange={selectQuantity}
-                                                className= "select"
+                                                className="select"
                                             >
                                                 {/* <option value="">0</option> */}
                                                 <option value="">select</option>
