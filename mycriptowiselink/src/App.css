@@ -1,1 +1,15 @@
+@font-face {
+    font-family: googleFont;
+    src: url("../public/fonts/Oswald-Light.ttf");
+}
 
+
+.App {
+    width: 100%;
+    height: auto;
+    background-color: #1B1B1B;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "googleFont";
+
+}

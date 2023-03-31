@@ -1,0 +1,131 @@
+.invertirContenido {
+    text-align: center;
+    height: auto;
+    min-height: 500px;
+    margin: 60px;
+    color: #ffffff;
+    box-shadow: -12px -5px 14px 4px rgba(0, 0, 0, 0.75);
+}
+
+.seleccion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info {
+    padding: 20px;
+}
+.info img {
+    display: block;
+    margin: 5px auto;
+    width: 20%;
+    height: 20%;
+}
+.info h2 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.info .precio {
+    font-size: 30px;
+    font-weight: bold;
+    color: #f27220;
+    margin-bottom: 10px;
+    display: block;
+}
+.info .fila {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.info .fila label {
+    display: block;
+    margin-bottom: 10px;
+}
+.info .fila select {
+    width: 100px;
+    font-size: 18px;
+    padding: 6px;
+    margin-right: 30px;
+    color: #ffffff;
+    background-color: #1b1b1b;
+}
+.info .fila button {
+    height: 40px;
+    border: none;
+    padding: 0 10px;
+    color: #ffffff;
+    background-color: #f27220;
+}
+
+
+
+@media (max-width: 1100px) {
+    .invertirContenido {
+        
+        height: auto;
+        min-height: 350px;
+      
+      
+    }
+  } 
+
+  @media (max-width: 750px) {
+    .invertirContenido {
+        
+        height: auto;
+        min-height: 300px;
+      
+      
+    }
+  } 
+
+
+  @media (max-width: 600px) {
+
+    .info img {
+        width: 50%;
+        height: 50%;
+    }
+
+    .info h2 {
+        font-size: 280%;
+    }
+    .info .precio {
+        font-size: 200%;
+        
+    }
+
+    .info .fila {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .cantidad {
+        width: 100%;
+    }
+
+    .info .fila label {
+       
+        width: 100%;
+    }
+    .select {
+        width: 100px;
+      
+    }
+    .info .fila button {
+        margin-top: 20px;
+        width: 100%;
+    }
+} 
+
+
+
+@media (max-width: 600px) { 
+    .info .fila button {
+        font-size: 80%;
+    }
+}

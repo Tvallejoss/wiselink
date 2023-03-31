@@ -1,0 +1,56 @@
+.investStyle {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.investStyle:hover {
+    text-decoration: none;
+    color: #F27220;
+}
+
+
+.cardInfo img {
+    width: 20%;
+    height: 20%;
+}
+
+
+
+  .precioInfo p {
+    font-size: 150%;
+}
+
+@media (max-width: 630px) {
+    .cardInfo img {
+        width: 50%;
+        height: 50%;
+    }
+
+    .precioInfo p {
+        font-size: 120%;
+    }
+  } 
+ 
+
+  @media (max-width: 460px) {
+    .cardInfo img {
+        width: 60%;
+        height: 60%;
+    }
+
+    .precioInfo p {
+        font-size: 115%;
+    }
+  } 
+
+
+  @media (max-width: 320px) {
+    .cardInfo img {
+        width: 60%;
+        height: 60%;
+    }
+
+    .precioInfo p {
+        font-size: 100%;
+    }
+  } 
