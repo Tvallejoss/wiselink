@@ -29,9 +29,10 @@ Mi nombre es Tomas Vallejos y esta es mi resolucion al ejercicio practico para e
 
 
 #Levantar el proceso
-    ° Asegurarse de estar en la rama (produccion), realizar un git pull por las dudas que haya que actualizar la rama y luego abrir la terminar y correr el siguiente comando ( npm start)
+    ° Asegurarse de estar en la rama (produccion), realizar un git pull por las dudas que haya que actualizar la rama y luego abrir la terminar y correr lor siguientes comandos (npm i) y despues ( npm start)
 
     °Para confirmar un uso correcto de la aplicacion en caso de que haya un error, borrar la informacion del local.storage y recargar la pagina.
+
 
 
 ¡Muchas Gracias y espero hablar pronto con ustedes, un Saludo!
