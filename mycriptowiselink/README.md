@@ -10,6 +10,7 @@ Mi nombre es Tomas Vallejos y esta es mi resolucion al ejercicio practico para e
     
 #Link video Youtube
     °Aqui van a tener un breve video mio explicando la aplicacion detalladamente para que no haya ninguna duda con respecto al funcionamiento.
+    https://www.youtube.com/watch?v=IFeQqXZWPzU
 
 
 

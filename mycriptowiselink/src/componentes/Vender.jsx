@@ -31,11 +31,6 @@ export const Vender = () => {
     };
     const Delete = () => {
         const cryptos = JSON.parse(localStorage.getItem("myWalletCrypto"));
-        console.log("CRYPTOs EN LA WALLET", cryptos);
-
-        console.log("OPCION SELECCIONADA A BORRAR", optionSelected);
-
-        console.log("estado de Crypto a borrar", cryptoToDelete);
 
         if (!optionSelected) return;
         let coinIndex;
@@ -45,15 +40,11 @@ export const Vender = () => {
             }
         });
 
-        console.log("Crypto agregada al arreglo de wallet", cryptos, cryptos[coinIndex]);
-
         //para cuando "vendes" todas tus monedas
         if (cryptos[coinIndex].quantity - optionSelected <= 0) {
             const nuevasCryptos = cryptos.filter(
                 (coin) => coin.id !== cryptoToDelete.id
             );
-
-                console.log("ENTRE A ESTE");
 
             localStorage.setItem(
                 "myWalletCrypto",
@@ -81,7 +72,7 @@ export const Vender = () => {
                     moneyToInvert:
                         myProfileData.moneyToInvert++ +
                         cryptoToDelete.current_price *
-                            (cryptos[coinIndex].quantity++ ),
+                            cryptos[coinIndex].quantity++,
                 })
             );
 
@@ -102,7 +93,7 @@ export const Vender = () => {
                 moneyToInvert:
                     myProfileData.moneyToInvert++ +
                     cryptoToDelete.current_price *
-                        (cryptos[coinIndex].quantity++ - optionSelected ),
+                        (cryptos[coinIndex].quantity++ - optionSelected),
             })
         );
         navigate("/myWallet");
